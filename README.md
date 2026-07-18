@@ -119,7 +119,13 @@ The repository includes:
 - FPGA floorplan view
 
 These results demonstrate the functional verification and implementation flow of the designed processor using Xilinx Vivado.
+### Final Waveform
 
+![Final Waveform](waveform_final.png)
+
+### Dataflow
+
+![Dataflow](dataflow.png)
 ---
 
 ## Project Structure
@@ -181,7 +187,9 @@ The generated Vivado behavioral simulation waveform was used to verify the test 
 - `WriteData_debug = 0x00000005`
 
 This confirms the successful execution of `addi x1, x0, 5`.
+### ADDI Test Case Waveform
 
+![ADDI Test Case Waveform](test_case1_waveform.png)
 ---
 ## Author
 
