@@ -134,6 +134,55 @@ These results demonstrate the functional verification and implementation flow of
 
 ---
 
+## Test Case Verification
+
+### Test Case 1: ADDI Instruction
+
+A test case was performed to verify the execution of an immediate arithmetic instruction through the complete RISC-V single-cycle datapath.
+
+**Instruction Tested:**
+`addi x1, x0, 5`
+
+**Machine Code:**
+`0x00500093`
+
+**Test Objective:**
+To verify that the processor correctly fetches, decodes, and executes the ADDI instruction and writes the result into the destination register.
+
+**Expected Result:**
+The value `5` should be written into register `x1`.
+
+**Simulation Results:**
+
+| Signal | Observed Value |
+|---|---|
+| PC_debug | `0x00000000` |
+| Instr_debug | `0x00500093` |
+| RegWrite_debug | `1` |
+| WriteReg_debug | `x1` |
+| WriteData_debug | `0x00000005` |
+
+**Result: PASS**
+
+The simulation waveform confirms that at PC address `0x00000000`, the instruction `0x00500093` (`addi x1, x0, 5`) is fetched and executed. The `RegWrite` signal is asserted, register `x1` is selected as the destination register, and the value `5` is generated as the write-back data. Therefore, the ADDI instruction was successfully executed by the RISC-V single-cycle datapath.
+
+### Testbench
+
+The test was performed using `addi_only_tb.vhd`, which instantiates the complete datapath and verifies the PC value, instruction, destination register, register write-enable signal, and write-back result.
+
+### Waveform Verification
+
+The generated Vivado behavioral simulation waveform was used to verify the test case. The waveform shows:
+
+- `PC_debug = 0x00000000`
+- `Instr_debug = 0x00500093`
+- `RegWrite_debug = 1`
+- `WriteReg_debug = 01 (x1)`
+- `WriteData_debug = 0x00000005`
+
+This confirms the successful execution of `addi x1, x0, 5`.
+
+---
 ## Author
 
 Developed as part of a Summer Internship Project.
